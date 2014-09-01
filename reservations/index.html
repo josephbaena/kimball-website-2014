@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Kimball Hall | Reservations</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+                        <li class="sidebar-brand">
+                <a href="../index.html">Kimball Hall</a>
+            </li>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+            <li>
+                <a href="../index.html#eventCalendar">Event Calendar</a>
+            </li>
+            <li>
+                <a href="../staff/index.html">Staff</a>
+            </li>
+            <li>
+                <a href="../policies/index.html">Policies</a>
+            </li>
+            <li>
+                <a href="../preassigns/index.html">Preassigns</a>
+            </li>
+            <li>
+                <a href="#">Reservations</a>
+            </li>
+            <li>
+                <a href="../artsjam/index.html">Arts Jam</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Callout -->
+    <aside class="callout-reservations">
+        <div class="text-vertical-center">
+            <h1 class="title">Reservations</h1>
+        </div>
+    </aside>
+    <!-- Header -->
+
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="text">
+                    <p>Kimball Hall has three common spaces that are availble for reservations by student groups: the main lounge, the side lounge, and the recording studio. Reservations for all groups are limited to a maximum 2 hour reservation on Mondays - Thursdays from 4pm - 10pm each week, and can only be made one week in advance.</p>
+
+         			<p>All groups using any of Kimball Hall's common spaces agree to clean up after themselves and to respect the residents and the property of the dorm.</p>
+               
+               		<p>To request an account on the reservation system for your student group, please email the Kimball RCCs at <a href="mailto:kimball-rcc@rescomp.stanford.edu?Subject=Kimball%20Reservation" target="_top">kimball-rcc@rescomp.stanford.edu</a>. Please allow 24 hours for the RCCs to process the reservation account.</p>
+
+                    <p>All rules and regulations must be adhered to. Student groups found in violation of these terms will be have their reservation privileges revoked.</p>
+
+               		<center>
+               			<form action="http://stanford.edu/group/resed/cgi-bin/manzanita/kimball/phpScheduleIt/">
+    					    <input type="checkbox" id="checky"><label for="checky">&nbsp Our student group agrees to abide by the terms and conditions outlined above.</label>
+                            <br/>
+                            <input type="submit" value="Make a Reservation" id="reserveButton" disabled>
+    					</form>
+                	</center>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Kimball Hall</strong>
+                    </h4>
+                    <p>661 Escondido Road<br>Stanford, CA 94305</p>
+                    <br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://www.facebook.com/groups/538725966237303/"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="http://kimball-hall.tumblr.com"><i class="fa fa-tumblr fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-flickr fa-fw fa-3x"></i></a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">&copy; Kimball Hall 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="../js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+
+    // Toggles terms and conditions checkbox
+    $('#checky').click(function() {
+	    if($(this).is(':checked') == false){
+	         $('#reserveButton').attr('disabled','disabled');   
+	    } else {
+	        $('#reserveButton').removeAttr('disabled');
+	    }
+	});
+    </script>
+
+</body>
+</html>
