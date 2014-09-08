@@ -1,0 +1,36 @@
+<% 	event.date_start = new Date(parseInt(event.start));
+	event.date_end = new Date(parseInt(event.end)); %>
+
+<h1><%= event.title %></h1>
+<h1><%= event.staff %></h1>
+
+<h1><%= event.location %></h1>
+<h1><%= event.points %></h1>
+
+<% 
+   function getTime(jquery_hour, jquery_minutes){
+	   hour = (jquery_hour + 24) % 24;
+	   period = 'AM';
+	   if(hour == 0){
+	       hour = 12;
+	   } else if (hour > 12) {
+	       hour = hour % 12;
+	       period = 'PM';
+	   }
+	   
+	   minutes = jquery_minutes;
+	   if((jquery_minutes / 10) < 1){
+		minutes = '0' + jquery_minutes; 
+	   }	
+  	   
+ 	   return(hour + ":" + minutes + period); 
+  }	 
+%>
+
+
+<div id = "event-meta" class  = "pull-right">
+    <span>Starts on <%= event.date_start.getDate() %> <%= calendar.locale["m" + event.date_start.getMonth()] %> <%= event.date_start.getFullYear() %>, at <%= getTime(event.date_start.getHours(), event.date_start.getMinutes()) %>
+<i class = "icon-time"></i></span><br />
+    <span>Ends on <%= event.date_end.getDate() %> <%= calendar.locale["m" + event.date_end.getMonth()] %> <%= event.date_end.getFullYear() %> at <%= getTime(event.date_end.getHours(), event.date_end.getMinutes()) %> <i class = "icon-time"></i></span><br />
+</div>
+
