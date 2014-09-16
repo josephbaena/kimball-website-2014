@@ -38,6 +38,7 @@
     $xml = simplexml_load_file($feed);
     $entries = $xml->entry;
     $data = [];
+    
 
     foreach ($entries as $entry) {
             $title = (string)$entry->title; 
@@ -45,11 +46,52 @@
 	    $author_email = (string)$entry->author->email;
 	    $time_str = (string)$entry->content;
  	    $time = substr($time_str, 6, strpos($time_str, 'Â')-6);
+	    
+	    $year_pos = strpos($time, ',') + 6; 
+	    
+	    $date = substr($time, 0, $year_pos);
+	    $rest = substr($time, $year_pos);
 
-	    $json_data = array ('title'=>$title,'author_email'=>$author_email,'time'=>$time);
-	    array_push($data, $json_data); 
+	    if(strpos($rest, ',')){
+
+	    } else {
+		//Single Day Event
+		$start_time = substr($rest, 0, strpos($rest, 'to')-1);
+		$end_time = substr($rest, strpos($rest, 'to')+2);
+		$start_time = editTime($start_time); 
+		$end_time = editTime($end_time);
+  	    }
+	  
+	    
+
+	    //echo($time);
+	    //$json_data = array ('title'=>$title,'author_email'=>$author_email,'start_time'=>$start_time, 'end_time'=>$end_time);
+	    //array_push($data, $json_data); 
 		
     }
-   header('Content-Type: application/json');
-   echo json_encode($data); 
+
+    function editTime($time_str){
+	$pm_pos = strpos($time_str, 'pm');
+	$hour; 
+	$hour_len = 1; 
+	if($pm_pos){
+		if($pm_pos == 2 || $pm_pos == 5){
+			$hour = (intval(substr($time_str, 1, 1)%12)) + 12;	
+		} else {
+			$hour = (intval(substr($time_str, 1, 2))); 
+		}	 
+	       	$time_str = mb_ereg_replace('pm',':00', $time_str);	    
+	        $hour_len = 2; 
+	} else {
+		$time_str = mb_ereg_replace('am',':00', $time_str);		
+	}
+	if($hour)
+		echo ($hour . substr($time_str, $hour_len, strlen($time_str)-$hour_len));
+	else
+		echo $time_str;
+    }	
+	
+
+  //header('Content-Type: application/json');
+   //echo json_encode($data); 
 ?>
